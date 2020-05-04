@@ -15,5 +15,16 @@
     "package.json",
     "priv/static/phoenix_live_view.js",
     "assets/js/phoenix_live_view.js"
-  ]
+  ],
+  "dependencies": {
+    "@types/morphdom": "^2.4.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "phoenix": "^1.5.1",
+    "source-map-loader": "^0.2.4"
+  },
+  "devDependencies": {
+    "prettier": "2.0.5",
+    "typedoc": "^0.16.11",
+    "typescript": "~3.7.5"
+  }
 }
