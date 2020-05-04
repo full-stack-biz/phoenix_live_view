@@ -25,3 +25,4 @@ phoenix_live_view-*.tar
 node_modules
 
 .idea
+.elixir_ls
