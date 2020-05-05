@@ -25,9 +25,9 @@ import {
   PHX_READONLY,
   PHX_AUTO_RECOVER,
   PHX_HAS_SUBMITTED,
-} from "assets/src/constants";
-import { DOM, DOMPatch } from "assets/src/dom";
-import { Browser } from "assets/src/browser";
+} from "./constants";
+import { DOM, DOMPatch } from "./dom";
+import { Browser } from "./browser";
 import {
   closestPhxBinding,
   isEmpty,
@@ -35,9 +35,9 @@ import {
   logError,
   maybe,
   serializeForm,
-} from "assets/src/util";
+} from "./util";
 import { Socket } from "phoenix";
-import { Rendered } from "assets/src/rendered";
+import { Rendered } from "./rendered";
 
 export class View {
   id: string;
@@ -159,7 +159,7 @@ export class View {
   showLoader(timeout?) {
     clearTimeout(this.loaderTimer);
     if (timeout) {
-      this.loaderTimer = setTimeout(() => this.showLoader(), timeout);
+      this.loaderTimer = window.setTimeout(() => this.showLoader(), timeout);
     } else {
       for (const id in this.viewHooks) {
         this.viewHooks[id].__trigger__("disconnected");

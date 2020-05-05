@@ -1,4 +1,4 @@
-import { LINK_HEADER, PUSH_TIMEOUT } from "assets/src/constants";
+import { LINK_HEADER, PUSH_TIMEOUT } from "./constants";
 
 export const Browser = {
   canPushState() {

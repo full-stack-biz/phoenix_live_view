@@ -4,8 +4,8 @@ import {
   PHX_COMPONENT,
   PHX_SKIP,
   STATIC,
-} from "assets/src/constants";
-import { isObject, logError } from "assets/src/util";
+} from "./constants";
+import { isObject, logError } from "./util";
 
 export class Rendered {
   private readonly viewId: any;

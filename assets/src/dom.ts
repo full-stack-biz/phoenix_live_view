@@ -25,9 +25,9 @@ import {
   PHX_UPDATE,
   PHX_FEEDBACK_FOR,
   PHX_STATIC,
-} from "assets/src/constants";
+} from "./constants";
 import morphdom = require("morphdom");
-import { clone, detectDuplicateIds, logError, maybe } from "assets/src/util";
+import { clone, detectDuplicateIds, logError, maybe } from "./util";
 import { Socket } from "phoenix";
 
 export const DOM = {

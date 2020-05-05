@@ -1,4 +1,4 @@
-import { PHX_VIEW_SELECTOR } from "assets/src/constants";
+import { PHX_VIEW_SELECTOR } from "./constants";
 
 export const logError = (msg, obj?) => {
   console.error && console.error(msg, obj);

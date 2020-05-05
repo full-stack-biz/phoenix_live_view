@@ -29,14 +29,11 @@ import {
   PHX_HAS_FOCUSED,
   PHX_DEBOUNCE,
   PHX_THROTTLE,
-  PHX_SESSION,
-  PHX_STATIC,
-  PHX_CONNECTED_CLASS,
-} from "assets/src/constants";
-import { Browser } from "assets/src/browser";
-import { clone, closestPhxBinding, closure, maybe } from "assets/src/util";
-import { DOM } from "assets/src/dom";
-import { View } from "assets/src/view";
+} from "./constants";
+import { Browser } from "./browser";
+import { clone, closestPhxBinding, closure, maybe } from "./util";
+import { DOM } from "./dom";
+import { View } from "./view";
 
 export const debug = (view, kind, msg, obj) => {
   if (view.liveSocket.isDebugEnabled()) {

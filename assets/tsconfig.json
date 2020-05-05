@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
+    "module": "amd",
     "outDir": "js",
     "allowJs": true,
     "target": "es5",
     "downlevelIteration": true,
-    "lib": ["dom", "scripthost", "es2017", "dom.iterable"]
+    "lib": ["dom", "scripthost", "es2017", "dom.iterable"],
+    "outFile": "./js/phoenix_live_view.js",
+    "moduleResolution": "node"
   },
-  "include": ["./assets/src/**/*"]
+  "files": ["./src/phoenix_live_view.ts"]
 }
