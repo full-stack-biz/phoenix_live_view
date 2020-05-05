@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "js",
+    "allowJs": true,
+    "target": "es5",
+    "downlevelIteration": true,
+    "lib": ["dom", "scripthost", "es2017", "dom.iterable"]
+  },
+  "include": ["./assets/src/**/*"]
+}
