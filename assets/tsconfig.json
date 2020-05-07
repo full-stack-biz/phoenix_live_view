@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
-    "module": "amd",
-    "outDir": "js",
+    "sourceMap": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "declaration": false,
     "allowJs": true,
     "target": "es5",
     "downlevelIteration": true,
     "lib": ["dom", "scripthost", "es2017", "dom.iterable"],
-    "outFile": "./js/phoenix_live_view.js",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
   },
-  "files": ["./src/phoenix_live_view.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

@@ -13,8 +13,8 @@
     "test.watch": "jest --watch"
   },
   "dependencies": {
-    "awesome-typescript-loader": "^5.2.1",
     "morphdom": "2.6.1",
+    "ts-loader": "6.2.1",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "source-map-loader": "^0.2.4"
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.4.1",
+    "@types/jest": "^25.2.1",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
     "babel-loader": "^8.0.5",
@@ -31,18 +32,16 @@
     "expose-loader": "^0.7.5",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "husky": "^4.2.5",
-    "jest": "^24.5.0",
+    "jest": "^24.9.0",
     "prettier": "2.0.5",
     "pretty-quick": "^2.0.1",
     "style-loader": "^0.20.2",
+    "ts-jest": "^25.5.0",
     "typedoc": "^0.16.11",
-    "typescript": "~3.7.5",
+    "typescript": "^3.7.5",
     "wait-for-expect": "^1.1.0",
     "webpack": "4.0.0",
     "webpack-cli": "^2.0.10"
-  },
-  "jest": {
-    "testRegex": "/test/.*_test\\.js$"
   },
   "husky": {
     "hooks": {

@@ -26,7 +26,7 @@ import {
   PHX_FEEDBACK_FOR,
   PHX_STATIC,
 } from "./constants";
-import morphdom = require("morphdom");
+import morphdom from "morphdom";
 import { clone, detectDuplicateIds, logError, maybe } from "./util";
 import { Socket } from "phoenix";
 
