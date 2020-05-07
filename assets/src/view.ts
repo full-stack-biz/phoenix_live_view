@@ -351,8 +351,8 @@ export class View {
   }
 
   destroyDescendent(id) {
-    Object.keys(this.root.children).forEach((parentId) => {
-      Object.keys(this.root.children[parentId]).forEach((childId) => {
+    Object.keys(this.root.children || {}).forEach((parentId) => {
+      Object.keys(this.root.children[parentId] || {}).forEach((childId) => {
         if (childId === id) {
           return this.root.children[parentId][childId].destroy();
         }
@@ -525,7 +525,7 @@ export class View {
   }
 
   destroyAllChildren() {
-    Object.keys(this.root.children[this.id]).forEach((id) => {
+    Object.keys(this.root.children[this.id] || {}).forEach((id) => {
       this.getChildById(id).destroy();
     });
   }
@@ -898,7 +898,7 @@ class ViewHook {
     this.el = el;
     this.viewName = view.name();
     this.el.phxHookId = ViewHook.makeID();
-    Object.keys(this.__callbacks).forEach((key) => {
+    Object.keys(this.__callbacks || {}).forEach((key) => {
       this[key] = this.__callbacks[key];
     });
   }

@@ -41,7 +41,7 @@ export const isEqualObj = (obj1, obj2) =>
   JSON.stringify(obj1) === JSON.stringify(obj2);
 
 export const isEmpty = (obj) => {
-  return Object.keys(obj).length == 0;
+  return Object.keys(obj || {}).length == 0;
 };
 
 export const serializeForm = (form, meta = {}) => {

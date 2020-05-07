@@ -567,7 +567,7 @@ export class LiveSocket {
   }
 
   bind(events, callback) {
-    Object.keys(events).forEach((event) => {
+    Object.keys(events || {}).forEach((event) => {
       const browserEventName = events[event];
 
       this.on(browserEventName, (e) => {

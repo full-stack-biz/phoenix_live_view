@@ -47,7 +47,7 @@ export class Rendered {
       return false;
     }
     return (
-      Object.keys(diff).filter((k) => k !== "title" && k !== COMPONENTS)
+      Object.keys(diff || {}).filter((k) => k !== "title" && k !== COMPONENTS)
         .length === 0
     );
   }
@@ -61,7 +61,7 @@ export class Rendered {
   }
 
   recursiveMerge(target, source) {
-    Object.keys(source).forEach((key) => {
+    Object.keys(source || {}).forEach((key) => {
       const val = source[key];
       const targetVal = target[key];
       if (isObject(val) && isObject(targetVal)) {
