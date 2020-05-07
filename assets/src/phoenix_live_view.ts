@@ -504,7 +504,7 @@ export class LiveSocket {
       { keyup: "keyup", keydown: "keydown" },
       (e, type, view, target, targetCtx, phxEvent, _phxTarget) => {
         const matchKey = target.getAttribute(this.binding(PHX_KEY));
-        if (matchKey && matchKey.toLowerCase() !== e.key.toLowerCase()) {
+        if (matchKey && matchKey.toLowerCase() !== e.key?.toLowerCase()) {
           return;
         }
 
