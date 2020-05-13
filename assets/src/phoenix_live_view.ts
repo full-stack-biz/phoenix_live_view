@@ -75,19 +75,19 @@ export const debug = (view, kind, msg, obj) => {
  *     (view, kind, msg, obj) => console.log(`${view.id} ${kind}: ${msg} - `, obj)
  */
 export class LiveSocket {
-  private unloaded: boolean;
-  private readonly socket: Socket;
-  private readonly bindingPrefix: string;
+  unloaded: boolean;
+  readonly socket: Socket;
+  readonly bindingPrefix: string;
   private opts: {};
   private params: any;
-  private readonly viewLogger: any;
+  readonly viewLogger: any;
   private defaults: any;
-  private activeElement: null;
-  private prevActive: HTMLElement;
+  activeElement: null;
+  prevActive: HTMLElement;
   private silenced: boolean;
   private main: View;
   private linkRef: number;
-  private readonly roots: {};
+  readonly roots: {};
   private href: string;
   private pendingLink: null;
   private currentLocation: any;
@@ -98,13 +98,13 @@ export class LiveSocket {
   constructor(
     url,
     phxSocket,
-    opts = {
-      bindingPrefix: undefined,
-      params: undefined,
-      viewLogger: undefined,
-      defaults: undefined,
-      hooks: "",
-      loaderTimeout: 0,
+    opts?: {
+      viewLogger?: (view, kind, msg, obj) => void;
+      bindingPrefix?: string;
+      params?: any;
+      hooks?: any;
+      defaults?: any;
+      loaderTimeout?: any;
     }
   ) {
     this.unloaded = false;
@@ -118,11 +118,14 @@ export class LiveSocket {
       `);
     }
     this.socket = new phxSocket(url, opts);
-    this.bindingPrefix = opts.bindingPrefix || BINDING_PREFIX;
+    this.bindingPrefix = opts?.bindingPrefix || BINDING_PREFIX;
     this.opts = opts;
-    this.params = closure(opts.params || {});
-    this.viewLogger = opts.viewLogger;
-    this.defaults = Object.assign(clone(DEFAULTS), opts.defaults || {});
+    this.params = closure(opts?.params || {});
+    this.viewLogger = opts?.viewLogger;
+    this.defaults = {
+      ...DEFAULTS,
+      ...opts?.defaults,
+    };
     this.activeElement = null;
     this.prevActive = null;
     this.silenced = false;
@@ -132,8 +135,8 @@ export class LiveSocket {
     this.href = window.location.href;
     this.pendingLink = null;
     this.currentLocation = clone(window.location);
-    this.hooks = opts.hooks || {};
-    this.loaderTimeout = opts.loaderTimeout || LOADER_TIMEOUT;
+    this.hooks = opts?.hooks || {};
+    this.loaderTimeout = opts?.loaderTimeout || LOADER_TIMEOUT;
 
     this.socket.onOpen(() => {
       if (this.isUnloaded()) {

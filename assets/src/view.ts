@@ -24,7 +24,7 @@ import {
   PHX_DISABLED,
   PHX_READONLY,
   PHX_AUTO_RECOVER,
-  PHX_HAS_SUBMITTED,
+  PHX_HAS_SUBMITTED, PHX_TRACK_STATIC,
 } from "./constants";
 import { DOM, DOMPatch } from "./dom";
 import { Browser } from "./browser";
@@ -41,17 +41,17 @@ import { Rendered } from "./rendered";
 
 export class View {
   id: string;
-  private readonly liveSocket: Socket;
+  readonly liveSocket: Socket;
   private flash: any;
-  private readonly parent: View;
+  readonly parent: View;
   private root: View;
   el: Element;
-  private readonly view: string;
+  readonly view: string;
   private ref: number;
   private href: string;
   private childJoins: number;
   private pendingDiffs: any[];
-  private loaderTimer: number;
+  loaderTimer: number;
   private joinCount: number;
   private joinPending: boolean;
   private joinCallback: () => void;
@@ -60,10 +60,10 @@ export class View {
   private pendingJoinOps: any[];
   private readonly viewHooks: {};
   private readonly children: {};
-  private readonly channel: any;
-  private rendered: Rendered;
+  channel: any;
+  rendered: Rendered;
 
-  constructor(el, liveSocket, parentView, href?, flash?) {
+  constructor(el, liveSocket, parentView?, href?, flash?) {
     this.liveSocket = liveSocket;
     this.flash = flash;
     this.parent = parentView;
@@ -88,7 +88,7 @@ export class View {
     this.channel = this.liveSocket.channel(`lv:${this.id}`, () => {
       return {
         url: this.href,
-        params: this.liveSocket.params(this.view),
+        params: this.connectParams(),
         session: this.getSession(),
         static: this.getStatic(),
         flash: this.flash,
@@ -101,6 +101,17 @@ export class View {
 
   isMain() {
     return this.liveSocket.main === this;
+  }
+
+  connectParams(){
+    let params = this.liveSocket.params(this.view)
+    let manifest =
+        DOM.all(document, `[${this.binding(PHX_TRACK_STATIC)}]`)
+            .map((node: HTMLInputElement | HTMLLinkElement) => 'src' in node && node.src || 'href' in node && node.href).filter(url => typeof(url) === "string")
+
+    if(manifest.length > 0){ params["_cache_static_manifest_latest"] = manifest }
+
+    return params
   }
 
   name() {

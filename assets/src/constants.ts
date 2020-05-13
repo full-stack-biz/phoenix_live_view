@@ -14,6 +14,7 @@ export const PHX_EVENT_CLASSES = [
 ];
 export const PHX_COMPONENT = "data-phx-component";
 export const PHX_LIVE_LINK = "data-phx-link";
+export const PHX_TRACK_STATIC = "track-static"
 export const PHX_LINK_STATE = "data-phx-link-state";
 export const PHX_REF = "data-phx-ref";
 export const PHX_SKIP = "data-phx-skip";

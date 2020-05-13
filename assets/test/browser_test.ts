@@ -34,7 +34,7 @@ describe("Browser", () => {
 
     beforeEach(() => {
       delete window.location;
-      window.location.href = "https://example.com";
+      window.location = { href: "https://example.com" } as Location;
     });
 
     afterAll(() => {
